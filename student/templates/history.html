@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}history{% endblock title %}
+
+{% block body %}
+<div class="container border-rounded-2">
+    <div class="mx-4 ">
+        <h3>Student History </h3>
+        <h6>Sbke raj yanhi chhupe huye hai!</h6>
+    </div>
+        <div class="border-1">
+            {%if inputdata%}
+            <table class="table table-bordered text-center mt-2">
+               
+                <thead>
+                    <th>S.No.</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>City</th>
+                    <th>Course</th>
+                </thead>
+                <tbody>
+                    {%for student in inputdata%}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{student.name}}</td>
+                        <td>{{student.email}}</td>
+                        <td>{{student.phone}}</td>
+                        <td>{{student.city}}</td>
+                        <td>{{student.course}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            {%else%}
+           <div>
+            <h2> Oops data not present here!</h2>
+            <a href="{% url "add" %}" class="btn btn-primary"> Add Here</a>
+           </div>
+            </table>
+            {% endif %}
+        </div>
+</div>
+
+
+
+{% endblock body %}

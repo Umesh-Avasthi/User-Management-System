@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}adddata{% endblock title %}
+{% block body %}
+<div class="container my-3 border rounded-4 px-5">
+    <h2>Update Here:</h2>
+    
+    <div class="container my-5 border rounded-2 p">
+        <form method="post">
+            {% csrf_token %}
+            
+            
+           
+           {% for record in data %}
+           
+            <div class="mx-5">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" id="name" name="name" value="{{record.name}}"    class="form-control" required>
+            </div>
+            <div class="mx-5">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name="email"value="{{record.email}}"     aria-describedby="emailHelp" required>
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mx-5">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="text" class="form-control" id="phone" name="phone" value="{{record.phone}}"aria-describedby="emailHelp" required>
+            </div>
+            <div class="mx-5">
+                <label for="City" class="form-label"> City</label>
+                <input type="text" class="form-control" id="city" name="city" value="{{record.city}}"required >
+            </div>
+            <div class="mx-5">
+                <label for="Course" class="form-label">Course</label>
+                <input type="text" class="form-control" id="Course" name="course" value="{{record.course}}"aria-describedby="emailHelp" required>
+            </div>
+            <div class="mb-3 form-check d-flex gap-5">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" name="checked" required>
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+              </div>
+               
+           {% endfor %}
+            
+            <div class="px-5 mb-3">
+                <button type="submit" class=" btn btn-primary ">Update</button>
+            </div>
+                
+           
+                
+           
+        </form>
+    </div>
+</div>
+{% endblock body %}

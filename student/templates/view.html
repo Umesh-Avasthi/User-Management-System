@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Student Data{% endblock title %}
+
+{% block body %}
+<div class="container border-rounded-2">
+    <div class="mx-4 ">
+        <h3>Sudents Record</h3>
+    </div>
+        <div class="border-1">
+            {%if inputdata%}
+            <table class="table table-bordered text-center mt-2">
+               
+                <thead>
+                    <th>S.No.</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>City</th>
+                    <th>Course</th>
+                    <th>Actions</th>
+                </thead>
+                <tbody>
+                    {%for student in inputdata%}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{student.name}}</td>
+                        <td>{{student.email}}</td>
+                        <td>{{student.phone}}</td>
+                        <td>{{student.city}}</td>
+                        <td>{{student.course}}</td>
+                        <td>
+                            <a href= {% url "update" student.id %}  class="btn btn-sm btn-warning border rounded-2">Update</a>
+                            <a href={% url "delete" student.id %} class="btn btn-sm btn-danger border rounded-2">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            {%else%}
+           <div>
+            <h2> Oops data not present here!</h2>
+            <a href="{% url "add" %}" class="btn btn-primary"> Add Here</a>
+           </div>
+            </table>
+            {% endif %}
+        </div>
+</div>
+
+
+
+{% endblock body %}
