@@ -1,10 +1,10 @@
 from django.shortcuts import render,HttpResponse
 from .models import student ,studenthistory #  the model is named Student
 
+from django.contrib.auth.forms import UserCreationForm  #for form aythontication 
 # Create your views here.
 
-def index(request):
-    return render(request,'index.html')
+
 
 def add(request):
     if request.method == 'POST':
@@ -60,8 +60,7 @@ def update(request,id):
             phone=phone,
             city=city,
             course=course
-            )
-                
+            )      
         return HttpResponse("Record Updated successfully")
     return render(request,'update.html', { 'data' : metadata })
 
@@ -77,4 +76,11 @@ def delete(request, id):
 def history(request):
     data= studenthistory.objects.all().values()
     return render(request,'history.html',{'inputdata':data})
-           
+def ragister(request):
+    if request.mathod == "POST":
+        form=UserCreationForm (request.POST)
+ 
+def login(request):
+    pass
+def logout(request):
+    pass

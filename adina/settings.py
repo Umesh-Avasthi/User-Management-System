@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'student',
 ]
+AUTHENTICATION_BACKENDS=[
+    'django.countrib.auth.backends.ModelBackend'
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
